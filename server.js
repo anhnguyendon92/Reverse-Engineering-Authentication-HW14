@@ -5,7 +5,7 @@ var session = require("express-session");
 var passport = require("./Develop/config/passport");
 
 // Setting up port and requiring models for syncing
-var PORT = process.env.PORT || 8080;
+var PORT = process.env.PORT || 8081;
 var db = require("./Develop/models");
 
 // Creating express app and configuring middleware needed for authentication
@@ -23,8 +23,12 @@ require("./Develop/routes/html.routes")(app);
 require("./Develop/routes/api-routes")(app);
 
 // Syncing our database and logging a message to the user upon success
-db.sequelize.sync().then(function() {
-  app.listen(PORT, function() {
-    console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
+db.sequelize.sync().then(function () {
+  app.listen(PORT, function () {
+    console.log(
+      "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
+      PORT,
+      PORT
+    );
   });
 });
